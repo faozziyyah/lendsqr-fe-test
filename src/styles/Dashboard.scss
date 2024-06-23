@@ -5,7 +5,61 @@
     background-color: hsla(0, 0%, 98%, 1);
     display: flex;
     flex-direction: column;
-    height: 100vh;
+
+    .section{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: auto;
+    }
+}
+
+.dashmain{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: auto;
+    margin-top: 1em;
+
+    h1{
+        color: $headingcolor;
+        font-weight: 600;
+        text-align: left;
+    }
+
+    .usercard{
+        @include basic-flex;
+        margin-top: 2em;
+    }
+
+    .card{
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        text-align: left;
+        padding-top: 1em;
+        padding-left: 2em;
+        background: hsla(0, 0%, 100%, 1);
+        border-radius: 5px;
+        border: 1px solid hsla(220, 58%, 31%, 0.06);
+        box-shadow: 3px 5px 20px 0px hsla(0, 0%, 0%, 0.04);
+
+        img{
+            width: 20%;
+        }
+
+        p{
+            color: $textcolor;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        h2{
+            color: $headingcolor;
+            margin-top: -5px;
+        }
+    }
 }
 
 .sidebar{
