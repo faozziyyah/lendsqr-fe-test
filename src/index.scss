@@ -1,24 +1,5 @@
-$bgcolor: hsla(180, 60%, 51%, 1);
-$headingcolor: hsla(220, 58%, 31%, 1);
-$textcolor: hsla(224, 20%, 41%, 1);
-
-@mixin green-text() {
-  color: $bgcolor;
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-@mixin button() {
-  background-color: $bgcolor;
-  border-radius: 8px;
-  color: #fff;
-  border: none;
-  outline: none;
-  text-transform: uppercase;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
+@import './styles/mixins';
+@import './styles/variables';
 
 body {
   margin: 0;
@@ -112,9 +93,10 @@ code {
       margin-bottom: 2em;
     }
 
-    button{
+    .btn{
       @include button();
       width: 65%;
+      text-decoration: none;
     }
 
   }

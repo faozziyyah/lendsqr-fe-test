@@ -1,0 +1,121 @@
+@import './variables';
+@import './mixins';
+
+.dashboard{
+    background-color: hsla(0, 0%, 98%, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.sidebar{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    box-shadow: 0px 5px 20px 0px hsla(0, 0%, 0%, 0.04);
+
+    #nav{
+        display: flex;
+        align-items: center;
+        width: 80%;
+        margin: auto;
+        justify-content: space-between;
+
+        p{
+            color: $headingcolor;
+            font-size: 15px;
+            font-weight: 600;
+            margin-left: -1em;
+        }
+    }
+
+    .nav{
+        display: flex;
+        align-items: center;
+        width: 80%;
+        margin: auto;
+
+        p{
+            color: $headingcolor;
+            font-size: 15px;
+            font-weight: 600;
+            margin-left: 1em;
+        }
+    }
+
+    .heading{
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 14.08px;
+        text-align: left;
+        color: $textcolor;
+        margin-left: 2.5em;
+    }
+}
+
+header{
+    @include basic-flex;
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: #fff;
+    box-shadow: 3px 0px 20px 0px hsla(0, 0%, 0%, 0.04);
+
+    #img1{
+        margin-left: 1em;
+        width: 10%;
+    }
+
+    .search{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 5px;
+        border: 1px solid hsla(224, 20%, 41%, 0.15);
+        width: 25%;
+
+        input{
+          border: none;
+          outline: none;
+          background-color: transparent;
+          margin-left: 1em;
+  
+          &::placeholder{
+            color: $textcolor;
+            opacity: 60%;
+          }
+        }
+
+        #search{
+            @include basic-flex;
+            background-color: $bgcolor;
+            width: 4%;
+            padding: 10px 1em;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+    }
+
+    .extras{
+        @include basic-flex;
+        width: 25%;
+        margin-right: 2em;
+
+        .docs{
+            text-transform: capitalize;
+            color: $headingcolor;
+            font-weight: 600;
+        }
+
+        .p1{
+            color: $headingcolor;
+            font-weight: 600;
+            margin-left: -3em;
+        }
+
+        .dropdown{
+            margin-left: -3em;
+        }
+    }
+}
