@@ -60,6 +60,37 @@
             margin-top: -5px;
         }
     }
+
+    table{
+        padding: 1em;
+        margin-top: 2em;
+        border-radius: 5px;
+        background: hsla(0, 0%, 100%, 1);
+        border: 1px solid hsla(220, 58%, 31%, 0.06);
+        box-shadow: 3px 5px 20px 0px hsla(0, 0%, 0%, 0.04);
+
+        thead{
+            text-align: left;
+            height: 50px;
+            color: $textcolor;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        tbody td{
+            text-align: left;
+            height: 50px;
+            color: $textcolor;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .status{
+            @include basic-flex;
+        }
+        
+    }
 }
 
 .sidebar{
