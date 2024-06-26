@@ -1,42 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { usercard } from "./Card"
 import dots from '../assets/dots.png'
-import line from '../assets/Rectangle 4.2.png'
-
-interface User {
-  id: string;
-  organization: string;
-  username: string;
-  email: string;
-  profile: {
-    phone: string;
-  };
-  createdAt: string;
-  status: string;
-}
+import filter from '../assets/filter.png'
+import next from '../assets/next.png'
+import previous from '../assets/previous.png'
+import down from '../assets/down.png'
+import { Link } from 'react-router-dom';
+import { UserContext } from './UserContext';
 
 const Main: React.FC = () => {
 
-  const [users, setUsers] = useState<User[]>([]);
+  const context = useContext(UserContext);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://api.json-generator.com/templates/xJF5tgaXQOLk/data', {
-          headers: {
-            'Authorization': 'Bearer 6nxibxxrb4mfbxxgqe97isynhre0jnf2sv598zpf'
-          }
-        });
-        const data: User[] = await response.json();
-        //console.log(data)
-        setUsers(data);
-      } catch (error) {
-        console.error('Error fetching the data', error);
-      }
-    };
+  if (!context) {
+    return <div>Loading...</div>;
+  }
 
-    fetchData();
-  }, []);
+  const { users } = context;
 
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = {
@@ -50,20 +30,35 @@ const Main: React.FC = () => {
     return new Date(dateString).toLocaleString('en-US', options);
   };
 
+  const getStatusClass = (status: string) => {
+    switch (status) {
+      case 'active':
+        return 'status-active';
+      case 'inactive':
+        return 'status-inactive';
+      case 'pending':
+        return 'status-pending';
+      case 'blacklisted':
+        return 'status-blacklisted';
+      default:
+        return '';
+    }
+  };
+
   return (
     <main className="dashmain">
         
-        <h1>Users</h1>
+      <h1>Users</h1>
 
-        <section className="usercard">
+      <section className="usercard">
 
-            {usercard.map((card) => (
-              <div className="card" key={card.title}>
-                <img src={card.img} alt="" id="" />
-                <p>{card.title}</p>
-                <h2>{card.total}</h2>
-              </div>
-            ))}
+        {usercard.map((card) => (
+          <div className="card" key={card.title}>
+            <img src={card.img} alt="" id="" />
+            <p>{card.title}</p>
+            <h2>{card.total}</h2>
+          </div>
+        ))}
       
       </section>
 
@@ -71,12 +66,12 @@ const Main: React.FC = () => {
 
         <thead>
           <tr>
-            <th>organization</th>
-            <th>username</th>
-            <th>email</th>
-            <th>phone number</th>
-            <th>date joined</th>
-            <th>status</th>
+            <th className='th'> organization <img src={filter} alt="" /> </th>
+            <th className='th'> username <img src={filter} alt="" /> </th>
+            <th id='th2'> email <img src={filter} alt="" /> </th>
+            <th id='th3'> phone number <img src={filter} alt="" /> </th>
+            <th id='th4'> date joined <img src={filter} alt="" /> </th>
+            <th> status <img src={filter} alt="" /> </th>
           </tr>
         </thead>
 
@@ -84,14 +79,14 @@ const Main: React.FC = () => {
 
           {users.map((user) => (
             <tr key={user.id} className='tr'>
-              <td>lendsqr</td>
+              <td><Link to={`/user/${user.id}`} className='tdlink'>lendsqr</Link></td>
               <td>{user.username}</td>
               <td>{user.email}</td>
               <td>{user.profile.phone}</td>
               <td>{formatDate(user.createdAt)}</td>
-              <td className='status'>
-                {user.status} 
-                <img src={dots} alt='' /> 
+              <td className="status">
+                <span className={getStatusClass(user.status)}>{user.status}</span>
+                <img src={dots} alt="" />
               </td>
             </tr>
           ))}
@@ -99,6 +94,32 @@ const Main: React.FC = () => {
         </tbody>
 
       </table>
+
+      <section className='pagination'>
+
+        <div className="entries-info">
+          Showing <span id='entries'>{users.length} <img src={down} alt='' /> </span> out of {users.length}
+        </div>
+
+        <nav className="paginate is-right" role="navigation" aria-label="pagination">
+
+          <a href="htt" className="pagination-previous"> <img src={previous} alt='' /> </a>
+
+          <div className="pagination-list">
+            <a href="htt" className="pagination-link" id='link1' aria-label="Goto page 1">1</a>
+            <a href="htt" className="pagination-link" aria-label="Goto page 45">2</a>
+            <a href="htt" className="pagination-link" aria-label="Goto page 45">3</a>
+            <span className="pagination-ellipsis">&hellip;</span>
+            <a href="htt" className="pagination-link" aria-label="Goto page 47">15</a>
+            <a href="htt" className="pagination-link" aria-label="Goto page 86">16</a>
+          </div>
+
+          <a href="htt" className="pagination-next"> <img src={next} alt='' /> </a>
+
+        </nav>
+      
+      </section>
+
 
     </main>
   )

@@ -21,3 +21,24 @@
   justify-content: space-between;
   align-items: center;
 }
+
+@mixin active() {
+  color: hsla(137, 60%, 51%, 1);
+  background: hsla(137, 60%, 51%, 0.06);
+}
+
+@mixin inactive() {
+  color: $textcolor;
+  background-color: hsla(224, 20%, 41%, 0.06);
+}
+
+@mixin pending() {
+  color: hsla(46, 100%, 46%, 1);
+  background: hsla(46, 100%, 46%, 0.10);
+}
+
+@mixin blacklist() {
+  color: hsla(345, 97%, 45%, 1);
+  background: hsla(345, 97%, 45%, 0.10);
+
+}

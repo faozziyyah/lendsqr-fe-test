@@ -73,9 +73,17 @@
             text-align: left;
             height: 50px;
             color: $textcolor;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             text-transform: uppercase;
+        }
+
+        .th, .th1, #th2, #th3, #th4 {
+            align-items: center;
+        }
+
+        th > img{
+            margin-left: 5px;
         }
 
         tbody td{
@@ -86,10 +94,89 @@
             font-weight: 500;
         }
 
+        .tdlink{
+            text-decoration: none;
+            color: $textcolor
+        }
+
         .status{
             @include basic-flex;
         }
+
+        .status span {
+          padding: 5px 1em;
+          border-radius: 100px;
+        }
         
+        .status-active{
+            @include active;
+        }
+        
+        .status-inactive{
+            @include inactive;
+        }
+        
+        .status-pending{
+            @include pending;
+        }
+        
+        .status-blacklisted{
+            @include blacklist;
+        }
+        
+    }
+
+    .pagination{
+        @include basic-flex;
+        margin-top: 2em;
+
+        .entries-info{
+            color: $textcolor;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            width: 40%;
+
+            #entries{
+                @include basic-flex;
+                background: hsla(220, 58%, 31%, 0.1);
+                border-radius: 5px;
+                margin-left: 10px;
+                margin-right: 10px;
+                padding: 5px 1em;
+                width: 10%;
+                color: hsla(220, 58%, 31%, 1);
+            }
+        }
+
+        .paginate{
+            @include basic-flex;
+            color: $textcolor;
+            font-size: 14px;
+            width: 30%;
+
+            .pagination-previous, .pagination-next{
+                background: hsla(220, 58%, 31%, 0.1);
+                border-radius: 5px;
+                padding: 3px 5px
+            }
+
+            .pagination-list{
+                @include basic-flex;
+                width: 70%;
+
+                a{
+                    color: $textcolor;
+                    text-decoration: none;
+                }
+
+                #link1{
+                    font-weight: 500;
+                }
+            }
+        }
+
     }
 }
 
