@@ -16,6 +16,15 @@
   padding-bottom: 10px;
 }
 
+@mixin actionbtn() {
+  outline: none;
+  border-radius: 8px;
+  text-transform: uppercase;
+  padding: 10px 1em;
+  background-color: transparent;
+  font-weight: 600;
+}
+
 @mixin basic-flex() {
   display: flex;
   justify-content: space-between;
@@ -41,4 +50,11 @@
   color: hsla(345, 97%, 45%, 1);
   background: hsla(345, 97%, 45%, 0.10);
 
+}
+
+@mixin info() {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
 }

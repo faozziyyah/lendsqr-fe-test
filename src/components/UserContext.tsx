@@ -5,7 +5,11 @@ interface User {
     organization: string;
     username: string;
     email: string;
+    balance: string;
     profile: {
+      email: string;
+      bvn: string;
+      accountNumber: string;
       phone: string;
       name: string;
       gender: string;

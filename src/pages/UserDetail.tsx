@@ -1,32 +1,23 @@
-import React, { useContext }from 'react';
-import { useParams } from 'react-router-dom';
-import { UserContext } from '../components/UserContext';
+import React from 'react';
+import { Header } from '../components/Header';
+import { Sidebar } from '../components/Sidebar';
+import { Detail } from '../components/Detail';
+import '../styles/Detail.scss'
 
 const UserDetail: React.FC = () => {
 
-    const { id } = useParams<{ id: string }>();
-    const context = useContext(UserContext);
-
-    if (!context) {
-      return <div>Loading...</div>;
-    }
-
-    const { users } = context;
-    const user = users.find(user => user.id === id);
-  
-    if (!user) {
-      return <div>User not found</div>;
-    }  
-
   return (
-    <div>
+    <div className='userdetail'>
 
-      <p><strong>Username:</strong> {user.username}</p>
-      <p><strong>Email:</strong> {user.email}</p>
-      <p><strong>Phone:</strong> {user.profile.phone}</p>
-      <p><strong>Organization:</strong> {user.organization}</p>
-      <p><strong>Status:</strong> {user.status}</p>
-      <p><strong>Created At:</strong> {user.createdAt}</p>
+      <Header />
+
+      <section className="section">
+
+        <Sidebar />
+
+        <Detail />
+
+      </section>
 
     </div>
   );

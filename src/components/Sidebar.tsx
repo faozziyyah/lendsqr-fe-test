@@ -5,7 +5,7 @@ import {business, items, settings} from './Sideitems'
 
 const Sidebar = () => {
   return (
-    <section className="sidebar">
+    <div className="sidebar">
 
       <div className="" id='nav'>
         <img src={briefcase} alt="" id="" />
@@ -45,7 +45,7 @@ const Sidebar = () => {
         </div>
       ))}
 
-    </section>
+    </div>
   )
 }
 
